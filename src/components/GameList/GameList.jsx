@@ -11,7 +11,7 @@ const GameList = (props) => {
           <article>
             <header>
               <h2>{game.title}</h2>
-              <img src={game.img} alt={game.title} />
+              <img src={game.image} alt={game.title} />
               <p>
                 {`${game.author?.username || "Unknown Author"} posted on
                 ${new Date(game.createdAt).toLocaleDateString()}`}

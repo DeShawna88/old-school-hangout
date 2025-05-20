@@ -17,7 +17,7 @@ const GameForm = (props) => {
         developer: '',
         publisher: '',
         platforms: [''],  // Array of supported platforms
-        rating: '',
+        rating: 5,
     });
 
     const handleChange = (evt) => {
@@ -47,7 +47,6 @@ const GameForm = (props) => {
     }, [gameId]);
 
 
-
     return (
         <main className={styles.container}>
             <h1>{gameId ? 'Edit Game' : 'New Game'}</h1>
@@ -61,11 +60,12 @@ const GameForm = (props) => {
                     value={formData.title}
                     onChange={handleChange}
                 />
-                <label htmlFor='image-input'>Image</label>
+                <label htmlFor="image-url-input">Image URL</label>
                 <input
-                    type='text'
-                    name='image'
-                    id='image-input'
+                    type="url"
+                    name="image"
+                    id="image-url-input"
+                    placeholder="Enter image URL"
                     value={formData.image}
                     onChange={handleChange}
                 />
@@ -93,6 +93,44 @@ const GameForm = (props) => {
                     value={formData.releaseDate}
                     onChange={handleChange}
                 />
+                <label htmlFor='developer-input'>Developer</label>
+                <input
+                    required
+                    type='text'
+                    name='developer'
+                    id='developer-input'
+                    value={formData.developer}
+                    onChange={handleChange}
+                />
+                <label htmlFor='publisher-input'>Publisher</label>
+                <input
+                    required
+                    type='text'
+                    name='publisher'
+                    id='publisher-input'
+                    value={formData.publisher}
+                    onChange={handleChange}
+                />
+                <label htmlFor='platforms-input'>Platforms</label>
+                <input
+                    required
+                    type='text'
+                    name='platforms'
+                    id='platforms-input'
+                    value={formData.platforms}
+                    onChange={handleChange}
+                />
+                <label htmlFor="rating-input">Rating</label>
+                <select
+                    name="rating"
+                    id="rating-input"
+                    value={formData.rating}
+                    onChange={handleChange}
+                >
+                    {Array.from({ length: 11 }, (_, i) => (
+                        <option key={i} value={i}>{i}</option>
+                    ))}
+                </select>
                 <button type='submit'>SUBMIT</button>
             </form>
         </main>

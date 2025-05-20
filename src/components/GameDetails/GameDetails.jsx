@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router';
 import { useState, useEffect, useContext } from 'react';
 import * as gameService from '../../services/gameService';
-// import ReviewForm from '../ReviewForm/ReviewForm';
+import ReviewForm from '../ReviewForm/ReviewForm';
 import { UserContext } from '../../contexts/UserContext';
 // import styles from './GameDetails.module.css';
 
@@ -9,9 +9,9 @@ import { UserContext } from '../../contexts/UserContext';
 const GameDetails = (props) => {
   const { gameId } = useParams();
   const { user } = useContext(UserContext);
-  console.log('gameId', gameId);
+  // console.log('gameId', gameId);
   const [game, setGame] = useState('');
-  console.log('props:', props);
+  
 
 
   useEffect(() => {
@@ -41,14 +41,15 @@ const GameDetails = (props) => {
     }));
   };
 
-
+  
   if (!game) return <main>Loading...</main>;
   return (
     <main>
       <section>
         <header>
-          <p>{game.genre.toUpperCase()}</p>
+          <p>{game.genres.toUpperCase()}</p>
           <h1>{game.title}</h1>
+          <img src={game.image} alt={game.title} />
           <div>
           <p>
             {`${game.author.username} posted on
