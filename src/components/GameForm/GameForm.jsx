@@ -11,7 +11,7 @@ const GameForm = (props) => {
     // console.log(gameId);
     const [formData, setFormData] = useState({
         title: '',
-        img: '',
+        image: '',
         genres: 'Action',
         releaseDate: '',
         developer: '',
@@ -40,7 +40,7 @@ const GameForm = (props) => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         console.log("Submitting:", formData);
-        if (!validateImageURL(formData.img)) {
+        if (!validateImageURL(formData.image)) {
             alert("Please enter a valid image URL!");
             return;
         }
@@ -61,7 +61,7 @@ const GameForm = (props) => {
         // Add a cleanup function
         return () => setFormData({
             title: '',
-            img: '',
+            image: '',
             genres: 'Action',
             releaseDate: '',
             developer: '',
@@ -88,10 +88,10 @@ const GameForm = (props) => {
                 <label htmlFor="image-url-input">Image URL</label>
                 <input
                     type="url"
-                    name="img"
+                    name="image"
                     id="image-url-input"
                     placeholder="Enter image URL"
-                    value={formData.img}
+                    value={formData.image}
                     onChange={handleChange}
                 />
                 <label htmlFor='genres-input'>Genres</label>

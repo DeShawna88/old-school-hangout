@@ -26,6 +26,7 @@
 .container label {
   font-weight: 600;
   margin: 7px 0px 14px 0px;
+  font-size: 20px;
 }
 
 .container button {
@@ -38,4 +39,8 @@
 input:focus, select:focus {
   outline: none;
   border: 1px solid var(--primary);
+}
+
+.container h1 {
+  font-size: 40px;
 }

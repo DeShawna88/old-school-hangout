@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { signUp } from '../../services/authService';
 import { UserContext } from '../../contexts/UserContext';
+import styles from './SignUpForm.module.css';
 
 
 const SignUpForm = () => {
@@ -38,10 +39,11 @@ const SignUpForm = () => {
   };
 
   return (
-    <main>
-      <h1>Sign Up</h1>
-      <p>{message}</p>
+    <main className={styles.container}>
+
       <form onSubmit={handleSubmit}>
+        <h1>Sign Up</h1>
+        <p>{message}</p>
         <div>
           <label htmlFor='username'>Username:</label>
           <input

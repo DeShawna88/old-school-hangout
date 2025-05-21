@@ -1,10 +1,14 @@
 // src/components/Landing.jsx
+import styles from './Landing.module.css';
 
 const Landing = () => {
   return (
-    <main>
+    <main className={styles.container}>
       <h1>Hello, welcome to Old - School Hangout</h1>
-      <p>Sign up now, or sign in to see your dashboard!</p>
+      <p>
+        <a href="/sign-up" className={styles.link}>Sign up</a>  or 
+        <a href="/sign-in" className={styles.link}>Sign in</a> to add games and reviews!
+      </p>
     </main>
   );
 };

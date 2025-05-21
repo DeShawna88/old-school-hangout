@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&family=Jersey+10&family=Sixtyfour+Convergence&display=swap');
+
+
 * {
   box-sizing: border-box;
 }
@@ -6,9 +9,19 @@ html,
 body {
   margin: 0;
   height: 100%;
-  overflow: hidden;
-  background-color: #f2f4f8;
-  font-family: sans-serif;
+  background-image: url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/2-arcade-machine-screen-allan-swart.jpg');
+  background-size: cover; /* Ensure the image covers the whole viewport */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent repeating */
+  font-family: "Sixtyfour Convergence", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0,
+    "XELA" 0,
+    "YELA" 0;
 }
 
 #root {
@@ -77,4 +90,16 @@ form {
 button,
 a {
   cursor: pointer;
+}
+
+button {
+  font-family: "Sixtyfour Convergence", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0,
+    "XELA" 0,
+    "YELA" 0;
 }

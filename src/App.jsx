@@ -57,7 +57,7 @@ const App = () => {
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element={user ? <Dashboard /> : <Landing />} />
+        <Route path='/' element={<Landing />} />
         {user ? (
           <>
             <Route path='/games' element={<GameList games={games} />} />

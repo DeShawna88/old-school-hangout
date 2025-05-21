@@ -4,6 +4,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { signIn } from '../../services/authService';
 import { UserContext } from '../../contexts/UserContext';
+import styles from './SignInForm.module.css';
 
 
 const SignInForm = () => {
@@ -24,8 +25,6 @@ const SignInForm = () => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      // This function doesn't exist yet, but we'll create it soon.
-      // It will cause an error right now
       const signedInUser = await signIn(formData);
 
       setUser(signedInUser);
@@ -36,10 +35,10 @@ const SignInForm = () => {
   };
 
   return (
-    <main>
-      <h1>Sign In</h1>
-      <p>{message}</p>
+    <main className={styles.container}>
       <form autoComplete='off' onSubmit={handleSubmit}>
+        <h1>Sign In</h1>
+        <p>{message}</p>
         <div>
           <label htmlFor='username'>Username:</label>
           <input

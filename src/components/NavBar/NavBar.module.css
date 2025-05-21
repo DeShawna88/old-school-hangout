@@ -7,12 +7,13 @@
   position: fixed;
   padding: 14px 21px;
   align-items: center;
-  background: white;
+  background: black;
   border-bottom: 1px solid rgb(200, 200, 200);
 }
 
-.container img {
-  width: 50px;
+.container a {
+  color: white;
+  text-decoration: none; /* Optional: Remove underline */
 }
 
 .container ul {
@@ -23,6 +24,7 @@
   font-weight: bold;
   align-items: center;
   justify-content: flex-end;
+  font-size: 20px;
 }
 
 .container li {

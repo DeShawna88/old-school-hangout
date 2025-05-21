@@ -16,6 +16,7 @@
   display: flex;
   max-width: 700px;
   flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .container section article {
@@ -74,13 +75,6 @@
 /* Button icon styling */
 /* This styling will be used when we add in our reusable icon component */
 
-.container header button img,
-.container header a img {
-  width: 24px;
-  height: 24px;
-  opacity: 0.25;
-}
-
 .container header button:hover,
 .container header a:hover {
   background-color: var(--border);
@@ -138,11 +132,13 @@
   justify-content: center;
 }
 
-.container form button img {
-  width: 25px;
-  height: 25px;
+.edit {
+  margin-right: 15px; /* Adds space after the Edit link */
 }
 
 .container img {
-    width: 700px;
+  width: 600px; /* Set your preferred width */
+  height: 400px; /* Set your preferred height */
+  object-fit: cover; /* Ensures images maintain a good aspect ratio */
+  border-radius: 5px; /* Optional: Adds rounded corners */
 }

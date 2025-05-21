@@ -1,0 +1,76 @@
+
+.container {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  flex-direction: column;
+  text-align: center; /* Ensures all child text stays centered */
+}
+
+.container p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  margin: 0 10px; /* Adds spacing on both sides */
+  text-decoration: underline;
+}
+
+.splash {
+  height: 91vh;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .testimonial {
+    height: 680px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .about {
+    height: 420px;
+  }
+  .testimonial {
+    height: 580px;
+  }
+}
+
+@media only screen and (max-width: 912px) {
+  .about {
+    height: 460px;
+  }
+  .testimonial {
+    height: 600px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .about {
+    height: 560px;
+  }
+  .testimonial {
+    height: 700px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .about {
+    height: 660px;
+  }
+  .container section > img {
+    min-width: 340px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .about {
+    height: 800px;
+  }
+  .container section > img {
+    min-width: 340px;
+  }
+}

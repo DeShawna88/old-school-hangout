@@ -57,7 +57,7 @@ const GameDetails = (props) => {
           </p>
           {game.author._id === user._id && (
             <>
-              <Link to={`/games/${gameId}/edit`}>Edit</Link>
+              <Link to={`/games/${gameId}/edit`} className={styles.edit}>Edit</Link>
               <button onClick={() => props.handleDeleteGame(gameId)}>
                 Delete
               </button>
