@@ -8,10 +8,10 @@ import styles from './GameForm.module.css'
 
 const GameForm = (props) => {
     const { gameId } = useParams();
-    console.log(gameId);
+    // console.log(gameId);
     const [formData, setFormData] = useState({
         title: '',
-        image: '',
+        img: '',
         genres: 'Action',
         releaseDate: '',
         developer: '',
@@ -24,8 +24,26 @@ const GameForm = (props) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
     };
 
+    // const handleSubmit = (evt) => {
+    //     evt.preventDefault();
+    //     if (gameId) {
+    //         props.handleUpdateGame(gameId, formData);
+    //     } else {
+    //         props.handleAddGame(formData);
+    //     }
+    // };
+
+    const validateImageURL = (url) => {
+        return /^https?:\/\/.+\.(jpg|jpeg|png|gif|webp|svg)$/.test(url);
+    };
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
+        console.log("Submitting:", formData);
+        if (!validateImageURL(formData.img)) {
+            alert("Please enter a valid image URL!");
+            return;
+        }
         if (gameId) {
             props.handleUpdateGame(gameId, formData);
         } else {
@@ -33,38 +51,25 @@ const GameForm = (props) => {
         }
     };
 
-    // useEffect(() => {
-    //     const fetchGame = async () => {
-    //         try {
-    //             const gameData = await gameService.show(gameId);
-    //             setFormData(gameData);
-    //         } catch (error) {
-    //             console.error("Error fetching game:", error);
-    //         }
-    //     };
-
-    //     if (gameId) fetchGame();
-    // }, [gameId]);
-
     useEffect(() => {
-    const fetchGame = async () => {
-      const gameData = await gameService.show(gameId);
-      setFormData(gameData);
-    };
-    if (gameId) fetchGame();
+        const fetchGame = async () => {
+            const gameData = await gameService.show(gameId);
+            setFormData(gameData);
+        };
+        if (gameId) fetchGame();
 
-    // Add a cleanup function
-    return () => setFormData({ 
-        title: '',
-        image: '',
-        genres: 'Action',
-        releaseDate: '',
-        developer: '',
-        publisher: '',
-        platforms: [''], 
-        rating: 5, 
-    });
-  }, [gameId]);
+        // Add a cleanup function
+        return () => setFormData({
+            title: '',
+            img: '',
+            genres: 'Action',
+            releaseDate: '',
+            developer: '',
+            publisher: '',
+            platforms: [''],
+            rating: 5,
+        });
+    }, [gameId]);
 
 
     return (
@@ -83,10 +88,10 @@ const GameForm = (props) => {
                 <label htmlFor="image-url-input">Image URL</label>
                 <input
                     type="url"
-                    name="image"
+                    name="img"
                     id="image-url-input"
                     placeholder="Enter image URL"
-                    value={formData.image}
+                    value={formData.img}
                     onChange={handleChange}
                 />
                 <label htmlFor='genres-input'>Genres</label>

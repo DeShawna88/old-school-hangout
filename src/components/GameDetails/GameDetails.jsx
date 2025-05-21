@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import * as gameService from '../../services/gameService';
 import ReviewForm from '../ReviewForm/ReviewForm';
 import { UserContext } from '../../contexts/UserContext';
-// import styles from './GameDetails.module.css';
+import styles from './GameDetails.module.css';
 
 
 const GameDetails = (props) => {
@@ -44,11 +44,11 @@ const GameDetails = (props) => {
   
   if (!game) return <main>Loading...</main>;
   return (
-    <main>
+    <main className={styles.container}>
       <section>
         <header>
           <p>{game.genres.toUpperCase()}</p>
-          <h1>{game.title}</h1>
+          <h1>{game.title.toUpperCase()}</h1>
           <img src={game.image} alt={game.title} />
           <div>
           <p>

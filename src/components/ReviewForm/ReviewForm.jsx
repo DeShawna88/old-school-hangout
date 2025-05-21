@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import * as gameService from '../../services/gameService';
-// import styles from './ReviewForm.module.css';
+import styles from './ReviewForm.module.css';
 
 
 const ReviewForm = (props) => {
@@ -37,7 +37,7 @@ const ReviewForm = (props) => {
     };
 
     if (gameId && reviewId) return (
-        <main>
+        <main className={styles.container}>
             <form onSubmit={handleSubmit}>
                 <h1>Edit Review</h1>
                 <label htmlFor='text-input'>Your review:</label>
