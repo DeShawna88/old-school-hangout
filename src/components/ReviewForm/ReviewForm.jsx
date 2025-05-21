@@ -9,6 +9,7 @@ import * as gameService from '../../services/gameService';
 const ReviewForm = (props) => {
     const [formData, setFormData] = useState({ comment: '' });
     const { gameId, reviewId } = useParams();
+    console.log(gameId, reviewId);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -36,7 +37,7 @@ const ReviewForm = (props) => {
     };
 
     if (gameId && reviewId) return (
-        <main className={styles.container}>
+        <main>
             <form onSubmit={handleSubmit}>
                 <h1>Edit Review</h1>
                 <label htmlFor='text-input'>Your review:</label>

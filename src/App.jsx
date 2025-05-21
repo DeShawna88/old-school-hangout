@@ -1,6 +1,6 @@
 
 import { useContext, useState, useEffect } from 'react';
-import {Routes, Route, useNavigate} from 'react-router';
+import { Routes, Route, useNavigate } from 'react-router';
 import NavBar from './components/NavBar/NavBar';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
@@ -11,6 +11,7 @@ import GameList from './components/GameList/GameList';
 import * as gameService from './services/gameService';
 import GameDetails from './components/GameDetails/GameDetails';
 import GameForm from './components/GameForm/GameForm';
+import ReviewForm from './components/ReviewForm/ReviewForm';
 
 
 const App = () => {
@@ -27,13 +28,13 @@ const App = () => {
     if (user) fetchAllGames();
   }, [user]);
 
-  const handleAddGame= async (gameFormData) => {
+  const handleAddGame = async (gameFormData) => {
     const newGame = await gameService.create(gameFormData);
     setGames([newGame, ...games]);
     navigate('/games');
   };
 
-const handleDeleteGame = async (gameId) => {
+  const handleDeleteGame = async (gameId) => {
     const deletedGame = await gameService.deleteGame(gameId);
     setGames(games.filter((game) => game._id !== deletedGame._id));
     navigate('/games');
@@ -51,29 +52,32 @@ const handleDeleteGame = async (gameId) => {
     navigate(`/games/${gameId}`);
   };
 
-  
+
   return (
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element={user ? <Dashboard /> : <Landing /> } />
+        <Route path='/' element={user ? <Dashboard /> : <Landing />} />
         {user ? (
           <>
-          <Route path='/games' element={<GameList games={games} />} />
-          <Route 
+            <Route path='/games' element={<GameList games={games} />} />
+            <Route
               path='/games/:gameId'
               element={<GameDetails handleDeleteGame={handleDeleteGame} />}
             />
             <Route path='/games/new' element={<GameForm handleAddGame={handleAddGame} />} />
             <Route
               path='/games/:gameId/edit' element={<GameForm handleUpdateGame={handleUpdateGame} />} />
+            <Route
+              path='/games/:gameId/reviews/:reviewId/edit' element={<ReviewForm />}
+            />
           </>
-          ) : (
-        <>
-        <Route path='/sign-up' element={<SignUpForm />} />
-        <Route path="/sign-in" element={<SignInForm />} />
-        </>
-          )}
+        ) : (
+          <>
+            <Route path='/sign-up' element={<SignUpForm />} />
+            <Route path="/sign-in" element={<SignInForm />} />
+          </>
+        )}
       </Routes>
     </>
   );
