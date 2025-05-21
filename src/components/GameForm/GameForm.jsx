@@ -33,18 +33,38 @@ const GameForm = (props) => {
         }
     };
 
-    useEffect(() => {
-        const fetchGame = async () => {
-            try {
-                const gameData = await gameService.show(gameId);
-                setFormData(gameData);
-            } catch (error) {
-                console.error("Error fetching game:", error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchGame = async () => {
+    //         try {
+    //             const gameData = await gameService.show(gameId);
+    //             setFormData(gameData);
+    //         } catch (error) {
+    //             console.error("Error fetching game:", error);
+    //         }
+    //     };
 
-        if (gameId) fetchGame();
-    }, [gameId]);
+    //     if (gameId) fetchGame();
+    // }, [gameId]);
+
+    useEffect(() => {
+    const fetchGame = async () => {
+      const gameData = await gameService.show(gameId);
+      setFormData(gameData);
+    };
+    if (gameId) fetchGame();
+
+    // Add a cleanup function
+    return () => setFormData({ 
+        title: '',
+        image: '',
+        genres: 'Action',
+        releaseDate: '',
+        developer: '',
+        publisher: '',
+        platforms: [''], 
+        rating: 5, 
+    });
+  }, [gameId]);
 
 
     return (
@@ -90,7 +110,7 @@ const GameForm = (props) => {
                     type='date'
                     name='releaseDate'
                     id='releaseDate-input'
-                    value={formData.releaseDate}
+                    value={formData.releaseDate ? new Date(formData.releaseDate).toISOString().split("T")[0] : ""}
                     onChange={handleChange}
                 />
                 <label htmlFor='developer-input'>Developer</label>

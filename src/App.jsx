@@ -62,9 +62,11 @@ const handleDeleteGame = async (gameId) => {
           <Route path='/games' element={<GameList games={games} />} />
           <Route 
               path='/games/:gameId'
-              element={<GameDetails />}
+              element={<GameDetails handleDeleteGame={handleDeleteGame} />}
             />
             <Route path='/games/new' element={<GameForm handleAddGame={handleAddGame} />} />
+            <Route
+              path='/games/:gameId/edit' element={<GameForm handleUpdateGame={handleUpdateGame} />} />
           </>
           ) : (
         <>
